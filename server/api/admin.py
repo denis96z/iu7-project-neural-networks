@@ -1,3 +1,5 @@
 from django.contrib import admin
+from api.models import ChineseCharacterImage, NeuralNetworkModel
 
-# Register your models here.
+admin.site.register(ChineseCharacterImage)
+admin.site.register(NeuralNetworkModel)
