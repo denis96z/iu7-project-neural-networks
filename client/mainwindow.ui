@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>342</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Распознавание ГРЗ ТС КНР</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGraphicsView" name="gvImage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>381</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLoadImage">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>30</y>
+      <width>89</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выбрать...</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="tbImagePath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>281</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblImagePath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>221</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Путь к файлу изображения:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblImage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>251</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Загруженное изображение:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRecognitionResult">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>311</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Распознанный иероглифический символ:</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>270</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="mainMenu">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="miFile">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="miOpen"/>
+    <addaction name="separator"/>
+    <addaction name="miExit"/>
+   </widget>
+   <widget class="QMenu" name="miUpdate">
+    <property name="title">
+     <string>Обновление</string>
+    </property>
+    <addaction name="miCheckUpdate"/>
+   </widget>
+   <widget class="QMenu" name="miHelp">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="miAbout"/>
+    <addaction name="miHowTo"/>
+   </widget>
+   <addaction name="miFile"/>
+   <addaction name="miUpdate"/>
+   <addaction name="miHelp"/>
+  </widget>
+  <action name="miOpen">
+   <property name="text">
+    <string>Открыть</string>
+   </property>
+  </action>
+  <action name="miExit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="miCheckUpdate">
+   <property name="text">
+    <string>Обновить</string>
+   </property>
+  </action>
+  <action name="miAbout">
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
+  <action name="miHowTo">
+   <property name="text">
+    <string>Инструкция</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
