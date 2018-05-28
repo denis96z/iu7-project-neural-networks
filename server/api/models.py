@@ -18,9 +18,17 @@ def image_filename(instance, _):
 
 class ChineseCharacterImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    img_class = models.CharField(max_length=1)
-    img_set_type = models.CharField(max_length=IMG_SET_TYPE_LEN, choices=IMG_SET_TYPES)
-    img = ResizedImageField(upload_to=image_filename, force_format='PNG')
+    img_class = models.CharField(max_length=1, blank=False, verbose_name='Класс изображения')
+    img_set_type = models.CharField(max_length=IMG_SET_TYPE_LEN, blank=False,
+                                    choices=IMG_SET_TYPES, verbose_name='Выборка')
+    img = ResizedImageField(upload_to=image_filename, force_format='PNG', verbose_name='Изображение')
+
+    def __str__(self):
+        return image_filename(self, None)
+
+    class Meta:
+        verbose_name = 'Изображение иероглифа'
+        verbose_name_plural = 'Изображения иероглифов'
 
 
 def model_filename(instance, _):
@@ -28,8 +36,13 @@ def model_filename(instance, _):
 
 
 class NeuralNetworkModel(models.Model):
-    file = models.FileField(upload_to=model_filename)
-    version = models.CharField(max_length=5, unique=True)
+    file = models.FileField(upload_to=model_filename, verbose_name='Файл')
+    version = models.CharField(max_length=5, unique=True, verbose_name='Версия')
+
+    def __str__(self):
+        return self.version
 
     class Meta:
         ordering = ['-version']
+        verbose_name = 'Модель'
+        verbose_name_plural = 'Модели'
