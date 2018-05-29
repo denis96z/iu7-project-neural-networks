@@ -1,10 +1,21 @@
 import os
-import api.settings
+from netifaces import interfaces, ifaddresses, AF_INET
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y3my$*7j=ulx@&p_nh&w&37mi1i^yq-1b+tss5i%#ifx1l^2+='
-ALLOWED_HOSTS = ['localhost']
 
+
+def get_allowed_hosts():
+    allowed_hosts = ['localhost', '127.0.0.1']
+    for itf_name in interfaces():
+        all_hosts = ifaddresses(itf_name).setdefault(AF_INET, [{'addr': ''}])
+        for host in all_hosts:
+            if host['addr'].startswith('192.168.'):
+                allowed_hosts.append(host['addr'])
+    return allowed_hosts
+
+
+ALLOWED_HOSTS = get_allowed_hosts()
 DEBUG = True
 
 INSTALLED_APPS = [
@@ -86,3 +97,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/data/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'data')
+
+from api.settings import *

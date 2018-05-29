@@ -3,6 +3,7 @@ from django.views.decorators.http import require_GET
 
 from api.models import NeuralNetworkModel
 from api.serializers import NeuralNetworkModelSerializer
+from api.settings import DJANGORESIZED_DEFAULT_SIZE
 
 
 @require_GET
