@@ -1,6 +1,6 @@
 import os
 
-from PIL import Image
+import cv2
 from django.core.management import BaseCommand
 
 
@@ -35,8 +35,9 @@ class Command(BaseCommand):
         src_paths = list_all_files(options['src_path'], options['dest_path'], '')
         for path in src_paths:
             src = os.path.join(options['src_path'], path)
-            img = Image.open(src).convert('LA')
+            img = cv2.imread(src)
             dest = os.path.join(options['dest_path'], path)
-            img.save(dest)
+            new_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            cv2.imwrite(dest, new_img)
 
         self.stdout.write(self.style.SUCCESS('Изображение успешно преобразованы в градации серого цвета'))
