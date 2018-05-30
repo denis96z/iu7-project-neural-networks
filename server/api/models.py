@@ -34,8 +34,8 @@ DJANGORESIZED_DEFAULT_FORCE_FORMAT_LOWER_CASE = \
     DJANGORESIZED_DEFAULT_FORCE_FORMAT.lower()
 
 IMG_SET_TYPES = (
-    ('tr', 'train'),
-    ('ts', 'test'),
+    ('tr', 'Тренировочная'),
+    ('ts', 'Тестовая'),
 )
 
 IMG_SET_TYPE_LEN = len(IMG_SET_TYPES[0][0])
