@@ -6,7 +6,8 @@ from api.models import NeuralNetworkModel
 class NeuralNetworkModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = NeuralNetworkModel
-        fields = ('file', 'version')
+        fields = '__all__'
+        depth = 1
 
 
 class NeuralNetworkModelViewSet(viewsets.ModelViewSet):
