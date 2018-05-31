@@ -39,20 +39,14 @@ class Command(BaseCommand):
 
         model = Sequential()
         model.add(Conv2D(filters=64, kernel_size=(3, 3), strides=(1, 1),
-                         padding='same', data_format='channels_first',
-                         input_shape=(1, img_width, img_height)))
-        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid',
-                               data_format='channels_first'))
+                         padding='same', input_shape=(img_width, img_height, 1)))
+        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Activation('relu'))
-        model.add(Conv2D(filters=128, kernel_size=(3, 3), strides=(1, 1),
-                         padding='same', data_format='channels_first'))
-        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid',
-                               data_format='channels_first'))
+        model.add(Conv2D(filters=128, kernel_size=(3, 3), strides=(1, 1), padding='same'))
+        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Activation('relu'))
-        model.add(Conv2D(filters=32, kernel_size=(2, 2), strides=(1, 1),
-                         padding='same', data_format='channels_first'))
-        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid',
-                               data_format='channels_first'))
+        model.add(Conv2D(filters=32, kernel_size=(2, 2), strides=(1, 1), padding='same'))
+        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Activation('relu'))
         model.add(Flatten())
         model.add(Dense(256, activation='relu'))
@@ -71,35 +65,33 @@ class Command(BaseCommand):
             rescale=1. / 255,
             shear_range=0.2,
             zoom_range=0.2,
-            horizontal_flip=True,
-            data_format='channels_first')
+            horizontal_flip=True)
         train_generator = tr_data_gen.flow_from_directory(
             os.path.join(options['src_path'], IMG_SET_TYPES[0][0]),
             target_size=(img_width, img_height),
             color_mode='grayscale',
             batch_size=16,
-            class_mode='binary')
+            class_mode='categorical')
 
         self.stdout.write(self.style.SUCCESS('Данные для обучения сформированы'))
 
         ts_data_gen = ImageDataGenerator(
-            rescale=1. / 255,
-            data_format='channels_first')
+            rescale=1. / 255)
         test_generator = ts_data_gen.flow_from_directory(
             os.path.join(options['src_path'], IMG_SET_TYPES[1][0]),
             target_size=(img_width, img_height),
             color_mode='grayscale',
             batch_size=16,
-            class_mode='binary')
+            class_mode='categorical')
 
         self.stdout.write(self.style.SUCCESS('Данные для тестирования сформированы'))
 
-        # model.fit_generator(
-        #     train_generator,
-        #     steps_per_epoch=2000,
-        #     epochs=50,
-        #     validation_data=test_generator,
-        #     validation_steps=800)
+        model.fit_generator(
+            train_generator,
+            steps_per_epoch=2000,
+            epochs=50,
+            validation_data=test_generator,
+            validation_steps=800)
 
         self.stdout.write(self.style.SUCCESS('Обучение завершено'))
 
