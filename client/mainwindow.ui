@@ -10,8 +10,17 @@
     <height>299</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Распознавание ГРЗ ТС КНР</string>
+  </property>
+  <property name="locale">
+   <locale language="Russian" country="Russia"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="gvImage">
@@ -89,7 +98,7 @@
      <string>Распознанный иероглифический символ:</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="tbRecognitionResult">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -136,16 +145,8 @@
     </property>
     <addaction name="miCheckUpdate"/>
    </widget>
-   <widget class="QMenu" name="miHelp">
-    <property name="title">
-     <string>Справка</string>
-    </property>
-    <addaction name="miAbout"/>
-    <addaction name="miHowTo"/>
-   </widget>
    <addaction name="miFile"/>
    <addaction name="miUpdate"/>
-   <addaction name="miHelp"/>
   </widget>
   <action name="miOpen">
    <property name="text">
