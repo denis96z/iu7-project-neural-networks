@@ -1,5 +1,1 @@
-{
-  "server": "localhost:8000",
-  "server-model-path": "/api/models/latest",
-  "model": null
-}
+{"server": "localhost:8000", "server-model-path": "/api/models/latest", "model": {"id": 1, "file": "/data/models/0.0.1.h5", "version": "0.0.1", "img_width": 50, "img_height": 100, "img_classes": [{"id": 25, "label": "\u4e91"}, {"id": 1, "label": "\u4eac"}, {"id": 11, "label": "\u5180"}, {"id": 18, "label": "\u5409"}, {"id": 29, "label": "\u5b81"}, {"id": 24, "label": "\u5ddd"}, {"id": 31, "label": "\u65b0"}, {"id": 23, "label": "\u664b"}, {"id": 27, "label": "\u6842"}, {"id": 3, "label": "\u6caa"}, {"id": 4, "label": "\u6d25"}, {"id": 26, "label": "\u6d59"}, {"id": 2, "label": "\u6e1d"}, {"id": 15, "label": "\u6e58"}, {"id": 10, "label": "\u743c"}, {"id": 7, "label": "\u7518"}, {"id": 5, "label": "\u7696"}, {"id": 8, "label": "\u7ca4"}, {"id": 16, "label": "\u82cf"}, {"id": 28, "label": "\u8499"}, {"id": 30, "label": "\u85cf"}, {"id": 13, "label": "\u8c6b"}, {"id": 9, "label": "\u8d35"}, {"id": 17, "label": "\u8d63"}, {"id": 19, "label": "\u8fbd"}, {"id": 14, "label": "\u9102"}, {"id": 6, "label": "\u95fd"}, {"id": 21, "label": "\u9655"}, {"id": 20, "label": "\u9752"}, {"id": 22, "label": "\u9c81"}, {"id": 12, "label": "\u9ed1"}]}}

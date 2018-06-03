@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, QtGui, uic
 
 from recognition import recognize
+from settings import IMG_WIDTH
 from updates import update
 
 
@@ -23,7 +24,7 @@ class MainWindow(QtWidgets.QMainWindow):
             return
         self.img_path = file[0]
         self.tbImagePath.setText(self.img_path)
-        img = QtGui.QPixmap(self.img_path).scaledToWidth(self.gvImage.width())
+        img = QtGui.QPixmap(self.img_path).scaledToWidth(IMG_WIDTH)
         scene = QtWidgets.QGraphicsScene()
         scene.addItem(QtWidgets.QGraphicsPixmapItem(img))
         self.gvImage.setScene(scene)
