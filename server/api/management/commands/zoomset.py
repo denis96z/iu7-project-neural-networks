@@ -18,13 +18,15 @@ def list_all_files(src_path, dest_path, short_path):
 
 
 class Command(BaseCommand):
-    help = 'Переводит цветные изображения в изображения в градациях серого цвета'
+    help = 'Масштабирует изображения из выборки'
 
     def add_arguments(self, parser):
         parser.add_argument('src_path', type=str)
         parser.add_argument('dest_path', type=str)
+        parser.add_argument('zoom', type=float)
 
     def handle(self, *args, **options):
+        zoom = options['zoom']
         if not os.path.exists(options['src_path']):
             self.stdout.write(self.style.ERROR('Не удалось прочитать из указанной директории: не существует'))
             return
@@ -37,7 +39,7 @@ class Command(BaseCommand):
             src = os.path.join(options['src_path'], path)
             img = cv2.imread(src)
             dest = os.path.join(options['dest_path'], path)
-            new_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            new_img = cv2.resize(img, (0, 0), fx=zoom, fy=zoom)
             cv2.imwrite(dest, new_img)
 
-        self.stdout.write(self.style.SUCCESS('Изображение успешно преобразованы в градации серого цвета'))
+        self.stdout.write(self.style.SUCCESS('Изображения успешно промасштабированы'))
