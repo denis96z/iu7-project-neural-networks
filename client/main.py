@@ -4,13 +4,13 @@ import sys
 from PyQt5 import QtWidgets
 
 from mainwindow import MainWindow
-from settings import CONFIG_FILENAME
+from settings import CONFIG_FILE_PATH
 from updates import update
 
 
 def main():
     try:
-        config = json.loads(open(CONFIG_FILENAME).read())
+        config = json.loads(open(CONFIG_FILE_PATH).read())
         if config['model'] is None:
             config = update(config)
     except:

@@ -1,8 +1,8 @@
 import json
-import shutil
 import requests
 
-from settings import MODEL_FILENAME, CONFIG_FILENAME
+from tqdm import tqdm
+from settings import MODEL_FILE_PATH, CONFIG_FILE_PATH
 
 
 def update(config):
@@ -11,13 +11,13 @@ def update(config):
         if r.status_code != 200:
             raise ConnectionError
         config['model'] = r.json()
-        r = requests.get('http://{0}{1}'.format(config['server'], config['model']['file']))
+        r = requests.get('http://{0}{1}'.format(config['server'], config['model']['file']), stream=True)
         if r.status_code != 200:
             raise ConnectionError
-        with open(MODEL_FILENAME, 'wb') as f:
-            r.raw.decode_content = True
-            shutil.copyfileobj(r.raw, f)
-        with open(CONFIG_FILENAME, 'w') as f:
+        with open(MODEL_FILE_PATH, "wb") as handle:
+            for data in tqdm(r.iter_content()):
+                handle.write(data)
+        with open(CONFIG_FILE_PATH, 'w') as f:
             json.dump(config, f)
     except:
         print('Не удалось загрузить данные с сервера')
