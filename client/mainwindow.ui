@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>371</width>
-    <height>299</height>
+    <width>410</width>
+    <height>333</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,15 +28,15 @@
      <rect>
       <x>10</x>
       <y>90</y>
-      <width>350</width>
-      <height>90</height>
+      <width>391</width>
+      <height>121</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="btnLoadImage">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>310</x>
       <y>30</y>
       <width>89</width>
       <height>31</height>
@@ -51,7 +51,7 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>251</width>
+      <width>291</width>
       <height>31</height>
      </rect>
     </property>
@@ -89,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>260</y>
       <width>301</width>
       <height>31</height>
      </rect>
@@ -102,17 +102,22 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>230</y>
-      <width>51</width>
-      <height>31</height>
+      <y>240</y>
+      <width>91</width>
+      <height>61</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>28</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QPushButton" name="btnRecognize">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>190</y>
+      <y>220</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -127,7 +132,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>371</width>
+     <width>410</width>
      <height>22</height>
     </rect>
    </property>
