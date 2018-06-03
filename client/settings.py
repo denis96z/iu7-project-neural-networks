@@ -1,2 +1,5 @@
 CONFIG_FILENAME = 'config.json'
 MODEL_FILENAME = 'model.h5'
+
+IMAGE_WIDTH = 350
+IMAGE_HEIGHT = 100
