@@ -38,24 +38,21 @@ class Command(BaseCommand):
         classes = list(ImageClass.objects.all())
 
         model = Sequential()
-        model.add(Conv2D(filters=64, kernel_size=(3, 3), strides=(1, 1),
+        model.add(Conv2D(filters=64, kernel_size=(5, 5), strides=(1, 1),
                          padding='same', input_shape=(img_width, img_height, 1)))
-        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Conv2D(filters=128, kernel_size=(3, 3), strides=(1, 1), padding='same'))
-        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Activation('relu'))
-        model.add(Conv2D(filters=32, kernel_size=(2, 2), strides=(1, 1), padding='same'))
         model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
+        model.add(Conv2D(filters=256, kernel_size=(2, 2), strides=(1, 1), padding='same'))
         model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2), padding='valid'))
         model.add(Flatten())
         model.add(Dense(256, activation='relu'))
-        model.add(Dropout(0.2))
         model.add(Dense(512, activation='relu'))
-        model.add(Dropout(0.3))
         model.add(Dense(256, activation='relu'))
-        model.add(Dropout(0.1))
-        model.add(Dense(num_classes, activation='sigmoid'))
+        model.add(Dense(num_classes, activation='softmax'))
         model.compile(optimizer=SGD(lr=0.05), loss='categorical_crossentropy', metrics=['accuracy'])
 
         self.stdout.write(self.style.SUCCESS('Модель построена'))
@@ -88,10 +85,10 @@ class Command(BaseCommand):
 
         model.fit_generator(
             train_generator,
-            steps_per_epoch=2000,
-            epochs=50,
+            steps_per_epoch=1000,
+            epochs=10,
             validation_data=test_generator,
-            validation_steps=800)
+            validation_steps=200)
 
         self.stdout.write(self.style.SUCCESS('Обучение завершено'))
 
