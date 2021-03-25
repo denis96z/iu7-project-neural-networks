@@ -14,7 +14,7 @@ protobuf==3.5.2.post1
 pydot==1.2.4
 pyparsing==2.2.0
 PyQt5==5.10.1
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 scikit-learn==0.19.1
 scipy==1.1.0
