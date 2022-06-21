@@ -23,7 +23,7 @@ Markdown==2.6.11
 MarkupSafe==1.0
 matplotlib==2.2.2
 netifaces==0.10.7
-numpy==1.14.3
+numpy==1.22.0
 opencv-python==3.4.1.15
 Pillow==5.1.0
 protobuf==3.5.2.post1
